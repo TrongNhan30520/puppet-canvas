@@ -1,10 +1,13 @@
-import puppeteer, { Browser } from 'puppeteer';
+import puppeteer, { Browser } from "puppeteer";
 
 let _browser: Browser | null = null;
 
 export async function getBrowser(): Promise<Browser> {
   if (!_browser) {
-    _browser = await puppeteer.launch({ headless: true });
+    _browser = await puppeteer.launch({
+      headless: true,
+      args: ["--disable-dev-shm-usage"],
+    });
   }
   return _browser;
 }
