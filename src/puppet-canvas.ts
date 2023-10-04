@@ -239,8 +239,8 @@ export async function createCanvas(
   );
   page.on("error", async (e: Error) => {
     // throw err; // catch don't work (issue: 6330, 5928, 1454, 6277, 3709)
-    throw new Error("puppet-canvas error" + e.message);
     await browser?.close();
+    throw new Error("puppet-canvas error" + e.message);
   });
   if (canvasElement) {
     return initializeCanvas(canvasElement, page);
